@@ -1,5 +1,7 @@
 # GitLab Omnibus Management Tools [![Travis Status][travis-image]][travis-url]
 
+**This project is working in progress!**
+
 ## Installation
 
 ```bash
