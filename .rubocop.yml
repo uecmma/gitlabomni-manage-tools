@@ -1,0 +1,22 @@
+AllCops:
+  DisplayStyleGuide: true
+  Exclude:
+    - .bundle/**/*
+    - bin/**/*
+    - vendor/**/*
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/Documentation:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 120
