@@ -15,16 +15,18 @@ Gem::Specification.new do |spec|
   spec.email = 'developer@mma.club.uec.ac.jp'
 
   spec.summary = 'This tools provide some features for GitLab Omnibus management'
-  spec.description = <<-DESCRIPTION
-This tools provide below features for GitLab Omnibus:
-  * Notify new updates of GitLab Omnibus for manager.
-  * Update GitLab Omnibus more easily.
-DESCRIPTION
+  spec.description = <<~DESCRIPTION
+    This tools provide below features for GitLab Omnibus:
+      * Notify new updates of GitLab Omnibus for manager.
+      * Update GitLab Omnibus more easily.
+  DESCRIPTION
   spec.homepage = 'https://github.com/uecmma/gitlabomni-manage-tools'
 
   spec.platform = Gem::Platform::RUBY
 
+  spec.add_dependency('thor')
   spec.add_dependency('mail')
+  spec.add_dependency('lockfile')
 
   spec.add_development_dependency('bundler')
   spec.add_development_dependency('rake')
