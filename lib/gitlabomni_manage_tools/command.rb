@@ -50,6 +50,15 @@ module GitLabOmnibusManage
       command_diff
     end
 
+    desc 'update [options]', 'update gitlab package'
+    method_option :yes, type: :boolean, default: false,
+      aliases: [:y], desc: 'force updating'
+    method_option :quiet, type: :boolean, default: false,
+      aliases: [:q], desc: 'quiet updating'
+    def update
+      command_update
+    end
+
     desc 'notify-cronjob [options]', 'notify cron job command'
     method_option :mailto, type: :string,
       desc: 'address for mail to'

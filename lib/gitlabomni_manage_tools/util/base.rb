@@ -6,6 +6,8 @@ require 'socket'
 
 module GitLabOmnibusManage
   module Util
+    class IllegalUserOperationError < StandardError; end
+
     module_function
 
     def deep_merge_hash(base, ext, oldbase = true)
@@ -61,6 +63,24 @@ module GitLabOmnibusManage
       Socket.gethostbyname(Socket.gethostname).first
     rescue
       'localhost'
+    end
+
+    def ask_yesno(message, default: true, retries: 3)
+      ask_message = "#{message} #{default ? '[Yn]' : '[yN]'}: "
+
+      print ask_message
+      retries.times do
+        s = STDIN.gets.downcase.strip
+
+        return false if s.start_with?('n')
+        return true if s.start_with?('y')
+        return default if s == ''
+
+        STDERR.puts 'type `yes` or `no`'
+        print ask_message
+      end
+
+      nil
     end
   end
 end

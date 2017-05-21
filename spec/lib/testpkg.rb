@@ -11,9 +11,15 @@ module TestPkg
     '9.0.2+ce.0'
   end
 
-  def update_command
+  def update_command(hash = {})
+    options = []
+    hash.each do |k, v|
+      options.push(k) if v
+    end
+
     <<~COMMAND
-      yum install -y gitlab-ce
+      echo 'updating gitlab-ce'
+      echo '  with [#{options.join(',')}] options'
     COMMAND
       .strip
   end

@@ -12,7 +12,7 @@ module GitLabOmnibusManage
       class UpdateLockManager
         def self.create(config)
           UpdateLockManager.new(
-            File.join(config.cache_dir, 'update.lock')
+            File.join(config.cache_dir, 'update_locked_version')
           )
         end
 
@@ -149,8 +149,6 @@ module GitLabOmnibusManage
     end
 
     def command_notify_cronjob
-      # abort 'not implemented'
-
       Lockfile(File.join(@config.cache_dir, 'notify-cronjob.lock')) do
         manager = NotifyCronjobCommand::UpdateLockManager.create(@config)
         return if !options[:force] && manager.locked_version == @pkg.available_version
