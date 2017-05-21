@@ -41,13 +41,15 @@ module GitLabOmnibusManage
             'host' => 'localhost',
             'port' => 25,
             'from' => "gitlab-manage@#{hostname}",
-            'to' => "root@#{hostname}"
+            'to' => "root@#{hostname}",
+            'show_diff' => true,
+            'use_primitive_command' => false
           }
         }
       end
     end
 
-    def initialize(datas)
+    def initialize(datas) # rubocop:disable Metrics/AbcSize
       datas = Util.deep_merge_hash(
         datas, Config.default_config
       )
@@ -64,7 +66,8 @@ module GitLabOmnibusManage
             port: datas['mail']['port'],
             from: datas['mail']['from'],
             to: datas['mail']['to'],
-            show_diff: datas['mail']['show_diff']
+            show_diff: datas['mail']['show_diff'],
+            use_primitive_command: datas['mail']['use_primitive_command']
           }
         end
     end
@@ -96,6 +99,10 @@ module GitLabOmnibusManage
 
     def mail_show_diff
       @mail[:show_diff]
+    end
+
+    def mail_use_primitive_command
+      @mail[:use_primitive_command]
     end
   end
 end
