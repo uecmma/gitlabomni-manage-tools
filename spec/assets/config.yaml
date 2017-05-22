@@ -1,0 +1,15 @@
+general:
+  data_dir: ./data
+  cache_dir: ./cache
+
+mail:
+  enable: false
+
+  host: localhost
+  port: 25
+
+  from: gitlab-manage@localhost
+  to: test@localhost
+
+  show_diff: false
+  use_primitive_command: false

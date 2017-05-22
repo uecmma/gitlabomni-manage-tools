@@ -13,6 +13,10 @@
 /vendor/
 /coverage/
 
+# for develop
+/config.yaml
+/tmp
+
 # for Ruby
 .bundle/
 *.gem

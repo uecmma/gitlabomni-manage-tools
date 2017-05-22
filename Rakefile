@@ -22,4 +22,4 @@ RuboCop::RakeTask.new
 require 'cucumber/rake/task'
 Cucumber::Rake::Task.new
 
-task default: [:rubocop, :spec, :cucumber]
+task default: %i[rubocop spec cucumber]
