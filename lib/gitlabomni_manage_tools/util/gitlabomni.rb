@@ -36,7 +36,7 @@ module GitLabOmnibusManage
       IO.popen("diff #{local_gitlab_template_path} -", 'r+') do |io|
         io.puts online_template
         io.close_write
-        io.gets.to_s
+        io.read
       end
     end
 
