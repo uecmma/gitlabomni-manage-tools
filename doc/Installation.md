@@ -29,7 +29,7 @@ Notice:
     ```bash
     cd /opt/gitlab-manage
     sudo env PATH=/opt/gitlab/embedded/bin:$PATH \
-      bundle install --deployment
+      bundle install --deployment --without development test
     sudo env PATH=/opt/gitlab/embedded/bin:$PATH \
       bundle binstub gitlabomni-manage-tools # create `bin/gitlab-manage` script
     ```
