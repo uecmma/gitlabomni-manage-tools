@@ -59,6 +59,13 @@ module GitLabOmnibusManage
       command_update
     end
 
+    desc 'update-index [options]', 'update package index'
+    method_option :quiet, type: :boolean, default: false,
+      aliases: [:q], desc: 'quiet updating'
+    def update_index
+      command_update_index
+    end
+
     desc 'notify-cronjob [options]', 'notify cron job command'
     method_option :mailto, type: :string,
       desc: 'address for mail to'

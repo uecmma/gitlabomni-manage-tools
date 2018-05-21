@@ -38,19 +38,29 @@ module GitLabOmnibusManage
         DebianUtil.apt_available_version(PKG_NAME)
       end
 
-      def update_command(options = {})
+      def update_index_command(options = {})
         update_args = []
-        upgrade_args = []
 
         if options[:quiet]
           update_args.push('-qq')
+        end
+
+        <<~COMMAND
+          apt-get update #{update_args.join(' ')}
+        COMMAND
+          .strip
+      end
+
+      def update_command(options = {})
+        upgrade_args = []
+
+        if options[:quiet]
           upgrade_args.push('-qq')
         end
 
         upgrade_args.push('-y') if options[:yes]
 
         <<~COMMAND
-          apt-get update #{update_args.join(' ')}
           apt-get install #{upgrade_args.join(' ')} gitlab-ce
         COMMAND
           .strip

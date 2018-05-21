@@ -25,6 +25,9 @@ Style/Documentation:
 Style/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
+Style/IfUnlessModifier:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - '*.gemspec'
