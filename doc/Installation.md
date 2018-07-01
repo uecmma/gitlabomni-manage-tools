@@ -50,7 +50,7 @@ Notice:
 
     export PATH="/opt/gitlab/embedded/bin:$PATH"
 
-    /opt/gitlab-manage/bin/gitlab-manage $*
+    exec /opt/gitlab-manage/bin/gitlab-manage $*
     $ sudo chmod +x /usr/local/bin/gitlab-manage
     $ gitlab-manage help # for checking
     ```
@@ -77,5 +77,5 @@ Notice:
     ```bash
     $ sudo apt-get install -y crontab
     $ sudo crontab -e -u root
-    + 15 04 * * * /opt/gitlab-manage/bin/gitlab-manage notify-cronjob
+    + 15 04 * * * /usr/local/bin/gitlab-manage notify-cronjob
     ```
