@@ -77,5 +77,5 @@ Notice:
     ```bash
     $ sudo apt-get install -y crontab
     $ sudo crontab -e -u root
-    + 15 04 * * * /usr/local/bin/gitlab-manage notify-cronjob
+    + 15 04 * * * /usr/local/bin/gitlab-manage notify-cronjob 2>&1 | /usr/bin/logger -t gitlab-manage
     ```
