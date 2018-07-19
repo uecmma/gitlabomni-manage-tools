@@ -15,7 +15,7 @@ module GitLabOmnibusManage
         '/gitlab-config-template/gitlab.rb.template'
       ].join('')
 
-      open(raw_url, &:read)
+      OpenURI.open_uri(raw_url, &:read)
     end
 
     def local_gitlab_template_path
@@ -42,8 +42,8 @@ module GitLabOmnibusManage
 
     def diff_gitlab_url(from, to)
       format(
-        'https://gitlab.com/gitlab-org/omnibus-gitlab/compare/%s...%s',
-        from, to
+        'https://gitlab.com/gitlab-org/omnibus-gitlab/compare/%<from>s...%<to>s',
+        from: from, to: to
       )
     end
   end

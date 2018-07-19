@@ -101,8 +101,6 @@ module GitLabOmnibusManage
         😉 Happy works on GitLab!
       BODY
 
-      module_function
-
       def create_mail(options, pkg, config)
         mail_env = create_mail_environ(pkg, config)
 
