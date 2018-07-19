@@ -42,6 +42,7 @@ module GitLabOmnibusManage
             'port' => 25,
             'from' => "gitlab-manage@#{hostname}",
             'to' => "root@#{hostname}",
+            'disable_tls' => false,
             'show_diff' => true,
             'use_primitive_command' => false
           }
@@ -66,6 +67,7 @@ module GitLabOmnibusManage
             port: datas['mail']['port'],
             from: datas['mail']['from'],
             to: datas['mail']['to'],
+            disable_tls: datas['mail']['disable_tls'],
             show_diff: datas['mail']['show_diff'],
             use_primitive_command: datas['mail']['use_primitive_command']
           }
@@ -95,6 +97,10 @@ module GitLabOmnibusManage
 
     def mail_to
       @mail[:to]
+    end
+
+    def mail_disable_tls
+      @mail[:disable_tls]
     end
 
     def mail_show_diff

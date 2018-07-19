@@ -5,6 +5,7 @@ require 'mail'
 
 require_relative '../util/base'
 require_relative '../util/gitlabomni'
+require_relative './update_index.rb'
 
 module GitLabOmnibusManage
   module SubCommands
@@ -38,10 +39,18 @@ module GitLabOmnibusManage
         if config.use_mail?
           mail = create_mail(options, pkg, config)
 
+          delivery_options = {}
+          delivery_options[:address] = config.mail_host
+          delivery_options[:port] = config.mail_port
+          if config.mail_disable_tls
+            delivery_options[:tls] = false
+            delivery_options[:enable_starttls] = false
+            delivery_options[:enable_starttls_auto] = false
+          end
+
           mail.delivery_method(
             :smtp,
-            address: config.mail_host,
-            port: config.mail_port
+            delivery_options
           )
           mail.deliver
         end
@@ -154,6 +163,8 @@ module GitLabOmnibusManage
     end
 
     def command_notify_cronjob
+      UpdateIndexCommand.update_index(@pkg, options)
+
       Lockfile(File.join(@config.cache_dir, 'notify-cronjob.lock')) do
         manager = NotifyCronjobCommand::UpdateLockManager.create(@config)
         return if !options[:force] && manager.locked_version == @pkg.available_version
