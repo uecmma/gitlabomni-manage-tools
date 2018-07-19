@@ -3,6 +3,8 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+$thor_runner = true # rubocop:disable Style/GlobalVars
+
 require 'rspec'
 require 'simplecov'
 

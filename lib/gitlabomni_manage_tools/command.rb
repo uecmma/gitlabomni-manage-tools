@@ -81,5 +81,10 @@ module GitLabOmnibusManage
     def notify_cronjob
       command_notify_cronjob
     end
+
+    desc 'backup [options]', 'backup command'
+    def backup
+      command_backup
+    end
   end
 end
