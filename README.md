@@ -1,5 +1,7 @@
 # GitLab Omnibus Management Tools [![Travis Status][travis-image]][travis-url]
 
+This is maintained fork from [uecmma/gitlabomni-manage-tools](https://github.com/uecmma/gitlabomni-manage-tools)
+
 ## Installation
 
 See [Installation Document](doc/Installation.md).
@@ -26,5 +28,5 @@ gitlab-manage update
 
 Update gitlab omnibus package if new version was available.
 
-[travis-image]: https://travis-ci.org/uecmma/gitlabomni-manage-tools.svg?branch=master
-[travis-url]: https://travis-ci.org/uecmma/gitlabomni-manage-tools.svg?branch=master
+[travis-image]: https://travis-ci.org/mizunashi-mana/gitlabomni-manage-tools.svg?branch=master
+[travis-url]: https://travis-ci.org/mizunashi-mana/gitlabomni-manage-tools.svg?branch=master

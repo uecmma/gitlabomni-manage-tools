@@ -6,7 +6,7 @@ require_relative 'util/archpkg'
 require_relative 'config'
 
 Dir.glob(
-  File.expand_path('commands/*.rb', File.dirname(__FILE__))
+  File.expand_path('commands/*.rb', __dir__)
 ).each do |entry|
   require_relative entry
 end
@@ -15,8 +15,6 @@ module GitLabOmnibusManage
   class Command < Thor
     def initialize(args, opts, config)
       super(args, opts, config)
-
-      return unless config[:current_command].disable_class_options.nil?
 
       @pkg = config[:package] || Util.gitlabpkg
       @config = Config.load(options['config'])

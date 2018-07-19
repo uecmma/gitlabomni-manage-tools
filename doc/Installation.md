@@ -5,11 +5,12 @@
 See https://docs.gitlab.com/omnibus/README.html#installation
 
 Now, GitLab Omnibus supports only linux platform.
-So, this manage tools works only on linux platform.
+So, this manage tools also works only in one's platform.
 
 ## Then, deploying manage tools
 
 Notice:
+
 * Now, this manage tools support only manual deployment.
 * Creating deb or rpm is working in progress.
 
