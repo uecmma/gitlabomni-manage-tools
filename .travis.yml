@@ -1,8 +1,11 @@
 language: ruby
 
 before_install:
-  - gem update --system
+  - gem update --system --no-document
   - gem install bundler
+
+  - gem --version
+  - bundle --version
 
 bundler_args: --retry=3
 

@@ -7,5 +7,4 @@ gemspec
 group :test do
   gem 'simplecov'
   gem 'rspec'
-  gem 'cucumber'
 end
