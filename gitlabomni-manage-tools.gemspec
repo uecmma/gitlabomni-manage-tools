@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'gitlabomni_manage_tools/version'
 
@@ -11,8 +11,7 @@ Gem::Specification.new do |spec|
   spec.date = Time.now.strftime('%Y-%m-%d')
   spec.license = 'MIT'
 
-  spec.authors = 'uecmma'
-  spec.email = 'developer@mma.club.uec.ac.jp'
+  spec.authors = 'mizunashi-mana'
 
   spec.summary = 'This tools provide some features for GitLab Omnibus management'
   spec.description = <<~DESCRIPTION
@@ -20,17 +19,17 @@ Gem::Specification.new do |spec|
       * Notify new updates of GitLab Omnibus for manager.
       * Update GitLab Omnibus more easily.
   DESCRIPTION
-  spec.homepage = 'https://github.com/uecmma/gitlabomni-manage-tools'
+  spec.homepage = 'https://github.com/mizunashi-mana/gitlabomni-manage-tools'
 
   spec.platform = Gem::Platform::RUBY
 
-  spec.add_dependency('thor')
-  spec.add_dependency('mail')
   spec.add_dependency('lockfile')
+  spec.add_dependency('mail')
+  spec.add_dependency('thor')
 
   spec.add_development_dependency('bundler')
-  spec.add_development_dependency('rake')
   spec.add_development_dependency('pry')
+  spec.add_development_dependency('rake')
   spec.add_development_dependency('rubocop')
 
   spec.files = `git ls-files -z`.split("\x0")

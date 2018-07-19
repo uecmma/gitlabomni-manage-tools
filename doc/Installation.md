@@ -5,11 +5,12 @@
 See https://docs.gitlab.com/omnibus/README.html#installation
 
 Now, GitLab Omnibus supports only linux platform.
-So, this manage tools works only on linux platform.
+So, this manage tools also works only in one's platform.
 
 ## Then, deploying manage tools
 
 Notice:
+
 * Now, this manage tools support only manual deployment.
 * Creating deb or rpm is working in progress.
 
@@ -50,7 +51,7 @@ Notice:
 
     export PATH="/opt/gitlab/embedded/bin:$PATH"
 
-    /opt/gitlab-manage/bin/gitlab-manage $*
+    exec /opt/gitlab-manage/bin/gitlab-manage $*
     $ sudo chmod +x /usr/local/bin/gitlab-manage
     $ gitlab-manage help # for checking
     ```
@@ -77,5 +78,5 @@ Notice:
     ```bash
     $ sudo apt-get install -y crontab
     $ sudo crontab -e -u root
-    + 15 04 * * * /opt/gitlab-manage/bin/gitlab-manage notify-cronjob
+    + 15 04 * * * /usr/local/bin/gitlab-manage notify-cronjob 2>&1 | /usr/bin/logger -t gitlab-manage
     ```

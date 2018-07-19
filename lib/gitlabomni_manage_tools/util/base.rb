@@ -61,7 +61,7 @@ module GitLabOmnibusManage
 
     def hostfullname
       Socket.gethostbyname(Socket.gethostname).first
-    rescue
+    rescue SocketError
       'localhost'
     end
 

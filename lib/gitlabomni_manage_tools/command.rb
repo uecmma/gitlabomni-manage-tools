@@ -6,7 +6,7 @@ require_relative 'util/archpkg'
 require_relative 'config'
 
 Dir.glob(
-  File.expand_path('commands/*.rb', File.dirname(__FILE__))
+  File.expand_path('commands/*.rb', __dir__)
 ).each do |entry|
   require_relative entry
 end
@@ -15,8 +15,6 @@ module GitLabOmnibusManage
   class Command < Thor
     def initialize(args, opts, config)
       super(args, opts, config)
-
-      return unless config[:current_command].disable_class_options.nil?
 
       @pkg = config[:package] || Util.gitlabpkg
       @config = Config.load(options['config'])
@@ -50,6 +48,13 @@ module GitLabOmnibusManage
       command_diff
     end
 
+    desc 'show-template [options]', 'show template'
+    method_option :available, type: :boolean, default: false,
+      desc: 'show template of available version'
+    def show_template
+      command_show_template
+    end
+
     desc 'update [options]', 'update gitlab package'
     method_option :yes, type: :boolean, default: false,
       aliases: [:y], desc: 'force updating'
@@ -59,6 +64,13 @@ module GitLabOmnibusManage
       command_update
     end
 
+    desc 'update-index [options]', 'update package index'
+    method_option :quiet, type: :boolean, default: false,
+      aliases: [:q], desc: 'quiet updating'
+    def update_index
+      command_update_index
+    end
+
     desc 'notify-cronjob [options]', 'notify cron job command'
     method_option :mailto, type: :string,
       desc: 'address for mail to'
@@ -66,6 +78,11 @@ module GitLabOmnibusManage
       aliases: [:f], desc: 'force notification'
     def notify_cronjob
       command_notify_cronjob
+    end
+
+    desc 'backup [options]', 'backup command'
+    def backup
+      command_backup
     end
   end
 end
