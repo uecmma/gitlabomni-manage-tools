@@ -50,6 +50,13 @@ module GitLabOmnibusManage
       command_diff
     end
 
+    desc 'show-template [options]', 'show template'
+    method_option :available, type: :boolean, default: false,
+      desc: 'show template of available version'
+    def show_template
+      command_show_template
+    end
+
     desc 'update [options]', 'update gitlab package'
     method_option :yes, type: :boolean, default: false,
       aliases: [:y], desc: 'force updating'
